@@ -141,6 +141,10 @@ export async function fetchInvoicesPages(query: string) {
 }
 
 export async function fetchInvoiceById(id: string) {
+  const encodedId = id;
+  const decodedId = decodeURIComponent(id);
+  console.log("____________")
+  console.log(decodedId);  // Outputs: ${id} - if it's still literal, the initial template was wrong
   try {
     const data = await sql<InvoiceForm>`
       SELECT
